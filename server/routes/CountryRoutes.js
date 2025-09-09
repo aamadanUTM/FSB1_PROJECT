@@ -1,9 +1,18 @@
-import e from "express";
 import express from "express";
 const router = express.Router();
 
-router.get("/countries", (req, res) => {
-  res.status(200).json({ message: "List of countries" });
-});
+import {
+  getAllCountries,
+  insertCountry,
+  updateCountry,
+  deleteCountry,
+  getCountryById,
+} from "../controllers/CountryControllers.js";
+
+router.get("/countries", getAllCountries);
+router.post("/saveCountry", insertCountry);
+router.put("/updateCountry/:id", updateCountry);
+router.delete("/deleteCountry/:id", deleteCountry);
+router.get("/country/:id", getCountryById);
 
 export default router;
